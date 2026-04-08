@@ -25,11 +25,11 @@ export const contact = {
 } as const;
 
 /**
- * Replace with your live URL after deploy (used for Open Graph).
- * For GitHub Project Pages this is often https://<user>.github.io/<repo>/
+ * Public site URL (canonical + Open Graph). Use your custom domain on GitHub Pages,
+ * not the *.github.io project URL, or link previews will show the GitHub address.
  */
 export const site = {
-  canonicalBaseUrl: 'https://vaidehi-ram.github.io/vaidehi-ram',
+  canonicalBaseUrl: 'https://vaidehiram.com',
 } as const;
 
 export const seo = {
