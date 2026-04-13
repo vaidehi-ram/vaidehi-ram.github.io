@@ -1,4 +1,4 @@
-import { ScrollView, Text, View, useWindowDimensions } from 'react-native';
+import { Text, View } from 'react-native';
 
 import { SectionHeading } from '@/components/landing/SectionHeading';
 import { testimonialsSection } from '@/constants/config';
@@ -8,7 +8,7 @@ type Testimonial = (typeof testimonialsData)[number];
 
 function TestimonialCard({ item }: { item: Testimonial }) {
   return (
-    <View className="border-babySky/50 from-white/98 to-babySky/10 shadow-card relative w-full shrink-0 overflow-hidden rounded-3xl border-2 bg-gradient-to-b p-6 shadow-lift backdrop-blur-sm web:transition-all web:duration-300 web:hover:-translate-y-1 web:hover:shadow-card md:min-w-0 md:flex-1">
+    <View className="border-babySky/50 from-white/98 to-babySky/10 shadow-card relative w-full overflow-hidden rounded-3xl border-2 bg-gradient-to-b p-6 shadow-lift backdrop-blur-sm web:transition-all web:duration-300 web:hover:-translate-y-1 web:hover:shadow-card">
       <Text
         className="font-display text-blush-200 pointer-events-none absolute -left-1 -top-2 text-7xl font-bold leading-none">
         &ldquo;
@@ -28,62 +28,23 @@ function TestimonialCard({ item }: { item: Testimonial }) {
 }
 
 export function Testimonials() {
-  const { width } = useWindowDimensions();
-  const isNarrow = width < 768;
-
-  if (!isNarrow) {
-    return (
-      <View className="from-sunshine/20 via-cream to-crayonLilac/20 bg-gradient-to-b px-5 py-16 md:px-10 md:py-20">
-        <View className="mx-auto w-full max-w-6xl">
-          <SectionHeading
-            eyebrow={testimonialsSection.eyebrow}
-            title={testimonialsSection.title}
-            subtitle={testimonialsSection.noteDesktop}
-          />
-          <View className="flex-col gap-6 md:flex-row md:flex-wrap md:justify-center">
-            {testimonialsData.map((item) => (
-              <View key={item.id} className="md:w-[31%] md:flex-grow">
-                <TestimonialCard item={item} />
-              </View>
-            ))}
-          </View>
-        </View>
-      </View>
-    );
-  }
-
-  // Card fills most of the viewport; side padding is handled inside the ScrollView.
-  const SIDE_PAD = 20;
-  const cardWidth = width - SIDE_PAD * 2;
-
   return (
-    <View className="from-sunshine/20 via-cream to-crayonLilac/20 bg-gradient-to-b py-16">
-      {/* Heading still gets side padding */}
-      <View className="mx-auto w-full max-w-6xl px-5">
+    <View className="from-sunshine/20 via-cream to-crayonLilac/20 bg-gradient-to-b px-5 py-16 md:px-10 md:py-20">
+      <View className="mx-auto w-full max-w-6xl">
         <SectionHeading
           eyebrow={testimonialsSection.eyebrow}
           title={testimonialsSection.title}
-          subtitle={testimonialsSection.noteMobile}
+          subtitle={testimonialsSection.noteDesktop}
         />
+        {/* Always vertical on mobile; side-by-side on desktop */}
+        <View className="flex-col gap-6 md:flex-row md:flex-wrap md:justify-center" style={{ flexDirection: 'column' }}>
+          {testimonialsData.map((item) => (
+            <View key={item.id} className="w-full md:w-[31%] md:flex-grow" style={{ width: '100%', alignSelf: 'stretch' }}>
+              <TestimonialCard item={item} />
+            </View>
+          ))}
+        </View>
       </View>
-      {/* Full-bleed scroll container so cards are never clipped */}
-      <ScrollView
-        horizontal
-        pagingEnabled={false}
-        showsHorizontalScrollIndicator={false}
-        decelerationRate="fast"
-        snapToInterval={cardWidth + 16}
-        snapToAlignment="start"
-        contentContainerStyle={{
-          paddingHorizontal: SIDE_PAD,
-          gap: 16,
-        }}>
-        {testimonialsData.map((item) => (
-          <View key={item.id} style={{ width: cardWidth }}>
-            <TestimonialCard item={item} />
-          </View>
-        ))}
-      </ScrollView>
     </View>
   );
 }

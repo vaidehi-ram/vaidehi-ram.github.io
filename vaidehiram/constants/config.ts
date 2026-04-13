@@ -103,12 +103,10 @@ export const about = {
   eyebrow: 'Meet me',
   sectionTitle: 'Why I love childminding',
   paragraphs: [
-    'Children remind us to notice the small wonders—a robin in the garden, the first successful pour from a jug, a new friendship over shared blocks. Supporting those moments in a calm, predictable environment is what drew me to childminding.',
-    'I plan gentle rhythms for the day: time outdoors, shared meals, stories, and plenty of space for unstructured play. You will get honest updates and practical tips so we stay aligned on sleep, meals, and developmental leaps.',
-    'Families trust me because I communicate early, listen well, and treat every child as an individual. I would love to meet you and learn how we can support your little one.',
+    '',
   ],
   pullQuote:
-    'My journey into children\'s worlds began when I had my son — he is six now. Watching him grow day by day had such a profound impact on me that I felt I was growing alongside him. It was through him that I truly discovered what inner joy feels like.',
+    'Children remind us to notice the small wonders—a robin in the garden, the first successful pour from a jug, a new friendship over shared blocks. Supporting those moments in a calm, predictable environment is what drew me to childminding. My journey into children\'s worlds began when I had my son — he is six now. Watching him grow day by day had such a profound impact on me that I felt I was growing alongside him. It was through him that I truly discovered what inner joy feels like.',
   philosophyCard: {
     emoji: '🌱',
     heading: 'Why quality childminding matters',
