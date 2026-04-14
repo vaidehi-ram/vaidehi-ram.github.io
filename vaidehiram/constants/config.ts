@@ -16,8 +16,6 @@ export const business = {
 } as const;
 
 export const contact = {
-  email: 'vaidehiram23@gmail.com',
-  phone: '+353874453433',
   /** Optional WhatsApp link (https://wa.me/353...) — leave empty string to hide */
   whatsappUrl: '',
   /** Instagram profile URL — leave empty to hide */
@@ -67,10 +65,7 @@ export const profilePhoto = {
 export const hero = {
   headline: 'Calm, joyful days for little learners',
   subline:
-    'I come to your home — so your little one stays in their own familiar space, with their own toys and routines. Gentle structure, outdoor play, and open partnership with families. Spaces limited — say hello to check availability.',
-  primaryCtaLabel: 'Contact me',
-  /** Shown under the main button */
-  ctaHint: 'Usually replies within one business day',
+    'I come to your home — so your little one stays in their own familiar space, with their own toys and routines. Gentle structure, outdoor play, and open partnership with families. Spaces limited.',
 } as const;
 
 export const trustBadges: {
@@ -164,5 +159,4 @@ export const faq = [
 
 export const footer = {
   note: `© ${new Date().getFullYear()} ${business.legalName}. All rights reserved.`,
-  contactHeading: 'Get in touch',
 } as const;

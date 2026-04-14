@@ -1,24 +1,6 @@
-import * as Linking from 'expo-linking';
-import { Pressable, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
-import { business, contact, footer } from '@/constants/config';
-
-function ContactChip({
-  label,
-  onPress,
-}: {
-  label: string;
-  onPress: () => void;
-}) {
-  return (
-    <Pressable
-      onPress={onPress}
-      accessibilityRole="button"
-      className="border-sunshine/40 bg-crayonCoral/20 active:bg-crayonCoral/30 rounded-full border-2 px-4 py-2.5">
-      <Text className="font-body text-center text-sm font-bold text-white">{label}</Text>
-    </Pressable>
-  );
-}
+import { business, footer } from '@/constants/config';
 
 export function Footer() {
   return (
@@ -33,20 +15,9 @@ export function Footer() {
       </View>
       <View className="mx-auto w-full max-w-6xl">
         <Text className="mb-2 text-center text-3xl">🧸</Text>
-        <Text className="font-display mb-1 text-center text-2xl font-bold text-white">{footer.contactHeading}</Text>
         <Text className="font-body text-ink-400 mb-10 text-center text-base">
           {business.shortName} · {business.area}
         </Text>
-        <View className="mb-10 flex-row flex-wrap items-center justify-center gap-3">
-          <ContactChip label={contact.email} onPress={() => Linking.openURL(`mailto:${contact.email}`)} />
-          <ContactChip label={contact.phone} onPress={() => Linking.openURL(`tel:${contact.phone.replace(/\s/g, '')}`)} />
-          {contact.whatsappUrl ? (
-            <ContactChip label="WhatsApp" onPress={() => Linking.openURL(contact.whatsappUrl)} />
-          ) : null}
-          {contact.instagramUrl ? (
-            <ContactChip label="Instagram" onPress={() => Linking.openURL(contact.instagramUrl)} />
-          ) : null}
-        </View>
         <Text className="font-body text-center text-xs text-white/45">{footer.note}</Text>
       </View>
     </View>

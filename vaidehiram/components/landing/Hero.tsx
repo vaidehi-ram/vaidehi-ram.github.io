@@ -1,18 +1,8 @@
-import * as Linking from 'expo-linking';
-import { Platform, Pressable, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
-import { business, contact, hero } from '@/constants/config';
+import { business, hero } from '@/constants/config';
 
 export function Hero() {
-  const onContact = () => {
-    if (Platform.OS === 'web') {
-      // Scroll smoothly to the footer contact section
-      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      Linking.openURL(`mailto:${contact.email}?subject=${encodeURIComponent(`Enquiry — ${business.shortName}`)}`);
-    }
-  };
-
   return (
     <View className="relative overflow-hidden from-blush-50 via-cream to-babySky/15 bg-gradient-to-b pb-16 pt-10 md:pb-24 md:pt-14">
       <View className="pointer-events-none absolute inset-0">
@@ -59,15 +49,6 @@ export function Hero() {
             {hero.subline}
           </Text>
 
-          <View className="flex-col gap-3 self-start">
-            <Pressable
-              onPress={onContact}
-              accessibilityRole="button"
-              className="border-ink-900/10 rounded-2xl border-b-4 border-b-crayonCoral bg-crayonCoral px-9 py-4 shadow-playful active:opacity-90 web:transition-transform web:hover:scale-[1.02]">
-              <Text className="font-body text-center text-base font-bold text-white">{hero.primaryCtaLabel}</Text>
-            </Pressable>
-            <Text className="font-body text-ink-500 max-w-xs pl-1 text-sm">{hero.ctaHint}</Text>
-          </View>
         </View>
 
         <View className="relative mt-14 hidden min-h-[400px] w-full flex-1 md:mt-0 md:flex">
